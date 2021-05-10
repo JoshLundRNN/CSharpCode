@@ -1,0 +1,91 @@
+using System;
+class MainClass {
+// The base Hero class
+class Hero{
+public string name = "The Scary Hero";
+public string desc = "Basic Desc";
+private int level;
+//encapsulation of the level var
+public int charLevel {
+ 
+get //getter and setters for the char level
+{
+return level;
+}
+ 
+set
+{
+level = value;
+}
+ 
+}
+ 
+//adding a function to show polymorphism
+public virtual void HeroSound() //notice the virtual keyword
+{
+Console.WriteLine("\nThe Scary Hero drops his cheese");
+}
+}
+//A class the inherits from the Hero class
+class Rouge : Hero{
+public int size;
+//polymorphism notice the override keyword
+public override void HeroSound()
+{
+Console.WriteLine("\nThe Crazy Dog says: AHHHHH I am a dog and I am crazy ahhhhhh");
+}
+}
+//another class that takes info from the main hero class
+class Tank : Hero{
+public int Strength;
+ 
+public override void HeroSound()
+{
+Console.WriteLine("\nThe King says: Shush Crazy Dog, this is very serious");
+}
+ 
+}
+ 
+public static void Main (string[] args) {
+ 
+//declaring a new instance of a main Hero class and printing out the base stats
+Hero gigi = new Hero();
+Console.WriteLine(gigi.name);
+gigi.desc = "The hero of the village, provider of cheese. King's favourite";
+Console.WriteLine(gigi.desc);
+gigi.charLevel = 150;//using charLevel instead of level becuase level is private
+Console.WriteLine(gigi.charLevel);
+ 
+ 
+Console.WriteLine("\n ---------------------------------- \n");
+//an instance of a rouge class using vars from both classes
+Rouge slooth = new Rouge();
+slooth.name = "Crazy Dog";
+Console.WriteLine(slooth.name);
+slooth.desc = "Simple description, he is a dog and he is crazy";
+Console.WriteLine(slooth.desc);
+slooth.charLevel = 200;
+Console.WriteLine(slooth.charLevel);//using charLevel instead of level becuase level is private
+ 
+ 
+Console.WriteLine("\n ---------------------------------- \n");
+//an instance of a Tank class using vars from both classes
+Tank chad = new Tank();
+chad.name = "The King";
+Console.WriteLine(chad.name);
+chad.desc = "He is the king of all cheese";
+Console.WriteLine(chad.desc);
+chad.charLevel = 300;
+Console.WriteLine(chad.charLevel);//using charLevel instead of level becuase level is private
+chad.Strength = +10;
+Console.WriteLine(chad.Strength);
+ 
+ 
+//calling the same function from each class and seeing the difference
+gigi.HeroSound();
+slooth.HeroSound();
+chad.HeroSound();
+}
+ 
+}
+
